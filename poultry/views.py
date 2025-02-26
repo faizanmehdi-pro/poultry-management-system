@@ -4,6 +4,9 @@ from .serializers import *
 from rest_framework.views import APIView
 from django.db.models import Sum
 from rest_framework.response import Response
+
+class FlockView(APIView):
+    
   
 
 class Dashboard(APIView):
