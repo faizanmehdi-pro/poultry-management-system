@@ -4,10 +4,12 @@ from .serializers import *
 from rest_framework.views import APIView
 from django.db.models import Sum
 from rest_framework.response import Response
+from rest_framework import viewsets
 
-class FlockView(APIView):
-    
-  
+
+class FlockView(viewsets.ModelViewSet): 
+    queryset=Flock.objects.all()
+    serializer_class=FlockSerializer
 
 class Dashboard(APIView):
     def get(self,request):
