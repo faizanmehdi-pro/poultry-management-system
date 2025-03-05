@@ -1,13 +1,20 @@
 from rest_framework import serializers
 from .models import (
+
     Flock, FeedType, Feed, Currency,  EggProduction, IncomeCategory,
-    ExpenseCategory, Income, Expense, InventoryLog
+    ExpenseCategory, Income, Expense, InventoryLog,
+     FeedType, Feed, Currency,  EggProduction, IncomeCategory,
+    ExpenseCategory, Income, Expense, InventoryLog,Flock
+
 )
 
 class FlockSerializer(serializers.ModelSerializer):
     class Meta:
         model = Flock
         fields = '__all__'
+
+
+
 
 class FeedTypeSerializer(serializers.ModelSerializer):
     class Meta:

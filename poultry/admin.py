@@ -1,6 +1,5 @@
 from django.contrib import admin
 from .models import *
-
 admin.site.register(Flock)
 admin.site.register(FeedType)
 admin.site.register(Feed)

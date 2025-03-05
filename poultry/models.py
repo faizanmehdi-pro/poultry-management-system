@@ -3,7 +3,7 @@ from django.utils import timezone
 
 
 class Flock(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100,unique=True)
     start_date = models.DateField()
     end_date = models.DateField(null=True, blank=True)
     type = models.CharField(max_length=50,default="broiler")  
@@ -12,8 +12,7 @@ class Flock(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(auto_now=True)
 
-
-
+    
 class FeedType(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True, null=True)
