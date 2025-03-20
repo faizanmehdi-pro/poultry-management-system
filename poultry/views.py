@@ -7,6 +7,7 @@ from rest_framework import viewsets
 from django.utils.timezone import now
 from rest_framework.decorators import action
 from rest_framework.permissions import AllowAny
+from rest_framework import status
 
 class FlockView(viewsets.ModelViewSet): 
     queryset=Flock.objects.all()
@@ -21,6 +22,14 @@ class FlockView(viewsets.ModelViewSet):
             serializer.save()
             return Response({"message":"Flock updated successfully","data":serializer.data})
         return Response(serializers.errors,status=status.HTTP_400_BAD_REQUEST)
+
+    @action(detail=True, methods=['patch'])
+    def add_bird(self, request, pk=None):
+        flock = self.get_object()
+        birds_to_add = request.data.get("birds_to_add", 0)
+        flock.birds_count += int(birds_to_add)
+        flock.save()
+        return Response({"id": flock.id, "birds_count": flock.birds_count}, status=status.HTTP_200_OK)
 
 class Dashboard(APIView):
     def get(self, request):
