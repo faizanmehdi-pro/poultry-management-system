@@ -6,7 +6,9 @@ router = DefaultRouter()
 router.register(r'flocks', FlockView) 
 
 
+
 urlpatterns = [
     path('', include(router.urls)),
     path('dashboard/', Dashboard.as_view(), name='dashboard'),
+    
 ]
